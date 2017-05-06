@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Calzado</string>
+    <string name="compra">COMPRA</string>
+    <string name="sexo">Sexo</string>
+    <string name="tipo_zapato">Tipo de zapato</string>
+    <string name="marca">Marca</string>
+    <string name="calcular">CALCULAR</string>
+    <string name="borrar">BORRAR</string>
+</resources>
