@@ -110,6 +110,11 @@ public class Principal extends AppCompatActivity {
             cajaCantidad.setError(this.getResources().getString(R.string.error_zero));
             return false;
         }
+        if (Integer.parseInt(cajaCantidad.getText().toString())>9999){
+            cajaCantidad.requestFocus();
+            cajaCantidad.setError(this.getResources().getString(R.string.error_exagerado));
+            return false;
+        }
         return true;
     }
 

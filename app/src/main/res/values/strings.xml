@@ -18,6 +18,7 @@
     <string name="valor">Valor de unidad</string>
     <string name="error_cantidad">Por favor dijete la cantidad</string>
     <string name="error_zero">No puede comprar zero calzado</string>
+    <string name="error_exagerado">Por favor no coloque mas de 9999 productos</string>
     <string-array name="opciones_sexo">
         <item>@string/hombre</item>
         <item>@string/mujer</item>

@@ -19,4 +19,5 @@
     <string name="valor">Unit Value</string>
     <string name="zapatilla">Shoe</string>
     <string name="cantidad">Quantity</string>
+    <string name="error_exagerado">Please do not load more than 9999 products</string>
 </resources>
