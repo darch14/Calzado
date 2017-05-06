@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class Principal extends AppCompatActivity {
     private EditText cajaCantidad;
+    private TextView valor,resultado;
     private Spinner comboTipo,comboSexo,comboMarca;
     private String[] opciones_tipo,opciones_sexo,opciones_marca;
     private ArrayAdapter adapter_tipo,adapter_sexo,adapter_marca;
@@ -19,6 +21,8 @@ public class Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+        valor=(TextView)findViewById(R.id.txtValor);
+        resultado=(TextView)findViewById(R.id.txtResultado);
         cajaCantidad=(EditText)findViewById(R.id.txtCantidad);
         comboTipo=(Spinner)findViewById(R.id.cmdTipoZapato);
         comboSexo=(Spinner)findViewById(R.id.cmdSexo);
@@ -35,8 +39,82 @@ public class Principal extends AppCompatActivity {
     }
 
     public void calcular(View v){
-        int cant,op_tipo,res;
-        cant=Integer.parseInt(cajaCantidad.getText().toString());
-        op_tipo=comboTipo.getSelectedItemPosition();
+        if (validar()){
+            int cant,op_tipo,op_sexo,op_marca,res=0,unidad=0;
+            cant=Integer.parseInt(cajaCantidad.getText().toString());
+            op_tipo=comboTipo.getSelectedItemPosition();
+            op_sexo=comboSexo.getSelectedItemPosition();
+            op_marca=comboMarca.getSelectedItemPosition();
+
+            if (op_tipo==0 && op_sexo==0 && op_marca==0){
+                unidad=120000;
+                res = cant*unidad;
+            }
+            if (op_tipo==0 && op_sexo==0 && op_marca==1){
+                unidad=140000;
+                res = cant*unidad;
+            }
+            if (op_tipo==0 && op_sexo==0 && op_marca==2){
+                unidad=130000;
+                res = cant*unidad;
+            }
+            if (op_tipo==1 && op_sexo==0 && op_marca==0){
+                unidad=50000;
+                res = cant*unidad;
+            }
+            if (op_tipo==1 && op_sexo==0 && op_marca==1){
+                unidad=80000;
+                res = cant*unidad;
+            }
+            if (op_tipo==1 && op_sexo==0 && op_marca==2){
+                unidad=100000;
+                res = cant*unidad;
+            }
+            if (op_tipo==0 && op_sexo==1 && op_marca==0){
+                unidad=100000;
+                res = cant*unidad;
+            }
+            if (op_tipo==0 && op_sexo==1 && op_marca==1){
+                unidad=130000;
+                res = cant*unidad;
+            }
+            if (op_tipo==0 && op_sexo==1 && op_marca==2){
+                unidad=110000;
+                res = cant*unidad;
+            }
+            if (op_tipo==1 && op_sexo==1 && op_marca==0){
+                unidad=60000;
+                res = cant*unidad;
+            }
+            if (op_tipo==1 && op_sexo==1 && op_marca==1){
+                unidad=70000;
+                res = cant*unidad;
+            }
+            if (op_tipo==1 && op_sexo==1 && op_marca==2){
+                unidad=120000;
+                res = cant*unidad;
+            }
+            valor.setText(String.valueOf(unidad));
+            resultado.setText(String.valueOf(res));
+        }
+    }
+
+    public boolean validar(){
+        if(cajaCantidad.getText().toString().isEmpty()){
+            cajaCantidad.requestFocus();
+            cajaCantidad.setError(this.getResources().getString(R.string.error_cantidad));
+            return false;
+        }
+        if (Integer.parseInt(cajaCantidad.getText().toString())==0){
+            cajaCantidad.requestFocus();
+            cajaCantidad.setError(this.getResources().getString(R.string.error_zero));
+            return false;
+        }
+        return true;
+    }
+
+    public void borrar(View v){
+        cajaCantidad.setText("");
+        cajaCantidad.requestFocus();
     }
 }

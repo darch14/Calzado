@@ -81,14 +81,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnCalcular"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="calcular" />
 
             <Button
                 android:text="@string/borrar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnBorrar"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="borrar" />
         </LinearLayout>
 
         <TextView
